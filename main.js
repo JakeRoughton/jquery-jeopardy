@@ -8,7 +8,11 @@ let submit = document.querySelector('#submit');
 let scoreMuted = document.querySelector('#scoreMuted')
 let score = 0;
 let arr = [];
-let random200 = {}
+let random200 = {};
+let random300 = {};
+let random400 = {};
+let random500 = {};
+let random900 = {};
 
 
 let readJeopardyData = async () => {
@@ -52,7 +56,7 @@ for(let i=0;i<btn300.length;i++){
     btn300[i].addEventListener('click', function(event){
         let invisible = event.target;
         invisible.style.opacity = '0';
-        let random300 = groupedData.$300[Math.round(Math.random() * groupedData.$300.length)];
+        random300 = groupedData.$300[Math.round(Math.random() * groupedData.$300.length)];
         questionData.innerHTML = `${random300.question}`
         categoryData.innerHTML = `${random300.category}`
         console.log('answer: ' + random300.answer)
@@ -80,7 +84,7 @@ for(let i=0;i<btn400.length;i++){
     btn400[i].addEventListener('click', function(event){
         let invisible = event.target;
         invisible.style.opacity = '0';
-        let random400 = groupedData.$400[Math.round(Math.random() * groupedData.$400.length)];
+        random400 = groupedData.$400[Math.round(Math.random() * groupedData.$400.length)];
         questionData.innerHTML = `${random400.question}`
         categoryData.innerHTML = `${random400.category}`
         console.log('answer: ' + random400.answer)
@@ -105,7 +109,7 @@ for(let i=0;i<btn500.length;i++){
     btn500[i].addEventListener('click', function(event){
         let invisible = event.target;
         invisible.style.opacity = '0';
-        let random500 = groupedData.$500[Math.round(Math.random() * groupedData.$500.length)];
+        random500 = groupedData.$500[Math.round(Math.random() * groupedData.$500.length)];
         questionData.innerHTML = `${random500.question}`
         categoryData.innerHTML = `${random500.category}`
         console.log('answer: ' + random500.answer)
@@ -131,7 +135,7 @@ for(let i=0;i<btn900.length;i++){
     btn900[i].addEventListener('click', function(event){
         let invisible = event.target;
         invisible.style.opacity = '0';
-        let random900 = groupedData.$900[Math.round(Math.random() * groupedData.$900.length)];
+        random900 = groupedData.$900[Math.round(Math.random() * groupedData.$900.length)];
         questionData.innerHTML = `${random900.question}`
         categoryData.innerHTML = `${random900.category}`
         console.log('answer: ' + random900.answer)
