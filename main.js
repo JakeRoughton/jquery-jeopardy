@@ -1,19 +1,29 @@
 let jeopardyTable = document.querySelector('#jeopardyTable');
 let categoryData = document.querySelector('#categoryData');
 let questionData = document.querySelector('#questionData');
+let answer200 = document.querySelector("#answer200");
+let price200 = document.querySelector("#price200");
+let answer300 = document.querySelector("#answer300");
+let price300 = document.querySelector("#price300");
+let answer400 = document.querySelector("#answer400");
+let price400 = document.querySelector("#price400");
+let answer500 = document.querySelector("#answer500");
+let price500 = document.querySelector("#price500");
+let answer900 = document.querySelector("#answer900");
+let price900 = document.querySelector("#price900");
 let answerLabel = document.querySelector('#answerLabel');
 let userInput = document.querySelector('#userInput');
 let answerResponse = document.querySelector('#answerResponse');
 let submit = document.querySelector('#submit');
 let scoreMuted = document.querySelector('#scoreMuted')
+let questionForm = document.querySelector("#questionForm");
 let score = 0;
 let arr = [];
-let random200 = {};
-let random300 = {};
-let random400 = {};
-let random500 = {};
-let random900 = {};
-
+let random200 = {}
+let random300 = {}
+let random400 = {}
+let random500 = {}
+let random900 = {}
 
 let readJeopardyData = async () => {
     let rawJeopardyData = await fetch('jeopardy.json');
@@ -25,12 +35,17 @@ let readJeopardyData = async () => {
 for(let i=0;i<btn200.length;i++){
     btn200[i].addEventListener('click', function(event){
         event.preventDefault();
+        btn200.disabled=true
         let invisible = event.target;
         invisible.style.opacity = '0';
         //if statement to prevent more questions on clicking black box?
         random200 = groupedData.$200[Math.round(Math.random() * groupedData.$200.length)];
         questionData.innerHTML = `${random200.question}`
         categoryData.innerHTML = `${random200.category}`
+        answer200.innerHTML = random200.answer;
+        price200.innerHTML = random200.value;
+
+
         console.log('answer: ' + random200.answer)
     
         })
@@ -42,10 +57,12 @@ for(let i=0;i<btn200.length;i++){
         
     if(userInput.value.toLowerCase() === random200.answer.toLowerCase()){
         score += parseInt(random200.value.substr(1));
-        console.log(random200.value);
+        console.log(random200.answer)
+        //console.log(random200.value);
         answerResponse.innerText = 'That is the correct answer!'
         scoreMuted.innerText = `$${score}`;
         userInput.value = '';
+
     }else{
         answerResponse.innerText= `Incorrect. The answer is ${random200.answer}`
     }       
@@ -59,6 +76,8 @@ for(let i=0;i<btn300.length;i++){
         random300 = groupedData.$300[Math.round(Math.random() * groupedData.$300.length)];
         questionData.innerHTML = `${random300.question}`
         categoryData.innerHTML = `${random300.category}`
+        answer300.innerHTML = random300.answer;
+        price300.innerHTML = random300.value;
         console.log('answer: ' + random300.answer)
 
         })
@@ -70,7 +89,6 @@ for(let i=0;i<btn300.length;i++){
         
     if(userInput.value.toLowerCase() === random300.answer.toLowerCase()){
         score += parseInt(random300.value.substr(1));
-        console.log(random300.value);
         answerResponse.innerText = 'That is the correct answer!'
         scoreMuted.innerText = `$${score}`;
         userInput.value = '';
@@ -87,6 +105,8 @@ for(let i=0;i<btn400.length;i++){
         random400 = groupedData.$400[Math.round(Math.random() * groupedData.$400.length)];
         questionData.innerHTML = `${random400.question}`
         categoryData.innerHTML = `${random400.category}`
+        answer400.innerHTML = random400.answer;
+        price400.innerHTML = random400.value;
         console.log('answer: ' + random400.answer)
         })
     }
@@ -94,7 +114,7 @@ for(let i=0;i<btn400.length;i++){
         event.preventDefault();
         console.log('event test')
         
-    if(userInput.value.toLowerCase() === random400.answer.toLowerCase()){
+    if(userInput.value.toLowerCase() === random500.answer.toLowerCase()){
         score += parseInt(random400.value.substr(1));
         answerResponse.innerText = 'That is the correct answer!'
         scoreMuted.innerText = `$${score}`;
@@ -112,6 +132,8 @@ for(let i=0;i<btn500.length;i++){
         random500 = groupedData.$500[Math.round(Math.random() * groupedData.$500.length)];
         questionData.innerHTML = `${random500.question}`
         categoryData.innerHTML = `${random500.category}`
+        answer500.innerHTML = random500.answer;
+        price500.innerHTML = random500.value;
         console.log('answer: ' + random500.answer)
         })
     }
@@ -120,7 +142,7 @@ for(let i=0;i<btn500.length;i++){
         event.preventDefault();
         console.log('event test')
         
-    if(userInput.value.toLowerCase() === random500.answer.toLowerCase()){
+    if(userInput.value.toLowerCase() === random900.answer.toLowerCase()){
         score += parseInt(random500.value.substr(1));
         answerResponse.innerText = 'That is the correct answer!'
         scoreMuted.innerText = `$${score}`;
@@ -138,6 +160,8 @@ for(let i=0;i<btn900.length;i++){
         random900 = groupedData.$900[Math.round(Math.random() * groupedData.$900.length)];
         questionData.innerHTML = `${random900.question}`
         categoryData.innerHTML = `${random900.category}`
+        // answer900.innerHTML = random900.answer;
+        // price900.innerHTML = random900.value;
         console.log('answer: ' + random900.answer)
         })
     }
@@ -150,6 +174,7 @@ for(let i=0;i<btn900.length;i++){
         answerResponse.innerText = 'That is the correct answer!'
         scoreMuted.innerText = `$${score}`;
         userInput.value = '';
+
     }else{
         answerResponse.innerText= `Incorrect. The answer is ${random900.answer}`
     }       
@@ -340,4 +365,3 @@ let btn300 = document.querySelectorAll('#jeopardyTable .btn300 ');
 let btn400 = document.querySelectorAll('#jeopardyTable .btn400 ');
 let btn500 = document.querySelectorAll('#jeopardyTable .btn500');
 let btn900 = document.querySelectorAll('#jeopardyTable .btn900');
-
